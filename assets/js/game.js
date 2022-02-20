@@ -73,6 +73,15 @@ var enemyInfo = [
 
     // Alert that players are starting
 var fight = function(enemy) {
+
+// keep track of who goes first
+var isPlayerTurn = true;
+
+if (Math.random() > 0.5) {
+  isPlayerTurn = false;
+} 
+
+
   while(playerInfo.health > 0 && enemy.health > 0) {
     // window.alert("Welcome to Robot Gladiators!");
 
@@ -113,8 +122,12 @@ var fight = function(enemy) {
       } else {
         window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
       }
-      // if player chooses to skip, stop the loop
    } 
+
+    // switch turn order for next round
+    isPlayerTurn = !isPlayerTurn;
+
+   // if player chooses to skip, stop the loop
    if (promptFight === "skip" || promptFight === "SKIP") {
       // confirm player wants to skip
       var confirmSkip = window.confirm("Are you sure you'd like to quit?");
